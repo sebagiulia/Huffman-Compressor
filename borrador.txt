@@ -97,66 +97,58 @@ typedef struct {
 
 Codificacion codificar_datos(arbolDeHuffman) {
   Codificacion *listaCodific = malloc(sizeof(Codificacion)*255)
-  recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific, "/0") 
+  char codigoInicial = "2"
+  recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific, crear_lista()) 
 }
 
-recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific) {
+recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific, listabits) {
   if (!btree_empty(arbol)){
-      btree_recorrer(arbol->left, orden, visit, extra1, concatenar(extra2, '0'));
+      btree_recorrer(arbol->left, orden, visit, extra1, agregarfinallista(listabits, '0'));
       if (btree_empty(arbol->left && btree_empty(arbol->right))
-        visit(arbol->dato, Extra1, extra2);
-      btree_recorrer(arbol->right, orden, visit, extra1, concatenar(extra2, '1');
+        visit(arbol->dato, listaCodific, listabits);
+      btree_recorrer(arbol->left, orden, visit, extra1, agregarfinallista(listabits, '1'));
   }
 }
 
-visit(dato, listaCodific, codif) {
+visit(dato, listaCodific, listabits) {
   int pos = ascii(dato);
-  int len = strlen(codif);
-  listaCodific[pos]->codif = malloc(sizeof(char)*(len+1))
-  strcopy(listaCodific[pos]->codif, codif)
+  int len = largolista(listabits);
+  listaCodific[pos]->codif = malloc(sizeof(char)*len)
+  convertirastring(listabits, listaCodific[pos]->codif)
   listaCodific[pos]->caracter = dato
 }
 
-char* concatenar(char *dato, char bit) {
-  int len = strlen(dato)
-  realloc(dato, sizeof(char)*(len+2)
-  dato[len+1] = dato[len] //muevo el '/0'
-  dato[len] = bit // agrego un 1 o un 0 antes del '/0'
-  return dato
+
+
+
+
+///////////////////////// serializar_arbol(arbolDeHuffman)////////////////////
+
+char *serializar_arbol(...) {
+  Lista lista = crearlista
+  serializar_estructura(arbolDeHuffman)
+  agregarcaracteres(arbolDeHuffman, lista)
+  return convertirastring(lista)
 }
 
-
-
-
-
-
-
-
-
-acion codificar_datos(arbolDeHuffman) {
-  Codificacion *listaCodific = malloc(sizeof(Codificacion)*255)
-  recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific, "/0") 
-}
-
-recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific) {
-  if (!btree_empty(arbol)){
-      btree_recorrer(arbol->left, orden, visit, extra1, concatenar(extra2, '0'));
-      if (btree_empty(arbol->left && btree_empty(arbol->right))
-        visit(arbol->dato, Extra1, extra2);
-      btree_recorrer(arbol->right, orden, visit, extra1, concatenar(extra2, '1');
+void serializar_estructura(arbolDeHuffman, lista) {
+  Nodo *temp = arbolDeHuffman
+  if temp->left == null && temp->right == null
+    lista = añadir_final_lista(lista, 1)
+  else {
+    lista = añadir_final_lista(lista, 0)
+    serializar_arbol(temp->left, lista)
+    serializar_arbol(temp->right, lista)
   }
 }
 
-visit(dato, listaCodific, codif) {
-  int pos = ascii(dato);
-  int len = strlen(codif);
-  listaCodific[pos]->codif = malloc(sizeof(char)*(len+1))
-  strcopy(listaCodific[pos]->codif, codif)
-  listaCodific[pos]->caracter = dato
+void agregarcaracteres(arbolDeHuffman, lista) {
+  recorrerarbol_extra(arbolDeHuffman, inorder, lista)
 }
 
-char* concatenar(char *dato, char bit) {
-  int len = strlen(dato)
-  realloc(dato, sizeof(char)*(len+2)
-  dato[len+1] = dato[len] //muevo el '/0'
-  dato[len] = bit // agrego 
+
+/////////////////////////////////////////
+
+
+
+
