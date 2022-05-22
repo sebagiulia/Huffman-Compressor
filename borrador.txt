@@ -1,0 +1,162 @@
+/////////////////////////////////////////////////calculador_frecuencias( textoOriginal , largoTexto ) ////
+
+///Previamente creamos la siguiente estructura:
+
+typedef struct {
+  int frec
+  char caracter
+} Par
+
+///Luego creamos la funcion:
+
+Par *calculador_frecuencias( textoOriginal, largoTexto ) { 
+  Par *parfrec = malloc(sizeof(Par)*255)
+  int contador = 0
+  while (contador <= 255) {
+    parfrec[contador].caracter = ascii[contador]
+    parfrec[contador]->frec = contar_frecuencia(parfrec[contador].caracter, textoOriginal, largoTexto)
+    contador++
+  }
+  return parfrec
+}
+
+///Funcion auxilicar:
+
+int contar_frecuencia(caracter, texto, largotexto) {
+  int contador = 0, frec = 0
+  while (contador <= largotexto) {
+    if (caracter == texto[contador])
+      frec++
+  }
+  return frec
+}
+
+
+
+
+
+
+
+/////////////////////////////////////// crear_lista_ord (arreglofrec, largo) ////
+
+Previamente creamos la estructura:
+
+typedef struct _nodo {
+  Par parfrec
+  _nodo *next, *right, *left
+} nodo
+
+typedef nodo *listaHuff
+
+ ///Luego defino la funcion:
+
+listaHuff crear_lista_ord (arreglofrec, largo) {
+  listaHuff lista = malloc(...)
+  int contador = 0
+  while (contador <= 255)
+    lista = lista_insertar(lista, partefrec[contador])
+  return lista
+}
+
+Funcion Auxiliar:
+
+lista_insertar ---> practica2 ejercicio 8
+
+
+
+
+////////////////////////////////////////////crear_arbol_huffman (listaOrdenada) ////////////
+
+
+listaHuff crear_arbol_huffman (listaOrdenada) {
+  while (lista->next != Null) {
+    nodo nodo1 = inicio_lista(listaOrdenada);
+    nodo nodo2 = nodo1->next
+    int sumaFrecs = nodo1->parfrec->frec + nodo2->parfrec->frec  
+    Par parnuevo
+    parnuevo->caracter = ' '
+    parnuevo->frec = sumaFrecs
+    nodo nodoNuevo
+    nodoNuevo = unirNodos(parNuevo, nodo1, nodo2)
+    desapilar(listaOrdenada)
+    desapilar(listaOrdenada)
+    listaOrdenada = insertar(listaOrdenada, nodoNuevo)   
+  }
+  return listaOrdenada
+}
+
+
+//////////// codificar_datos(arbolDeHuffman) /////////////////////////////
+
+///previamente creamos la estructura:
+
+typedef struct {
+  char caracter
+  char *codif
+} Codificacion
+
+Codificacion codificar_datos(arbolDeHuffman) {
+  Codificacion *listaCodific = malloc(sizeof(Codificacion)*255)
+  recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific, "/0") 
+}
+
+recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific) {
+  if (!btree_empty(arbol)){
+      btree_recorrer(arbol->left, orden, visit, extra1, concatenar(extra2, '0'));
+      if (btree_empty(arbol->left && btree_empty(arbol->right))
+        visit(arbol->dato, Extra1, extra2);
+      btree_recorrer(arbol->right, orden, visit, extra1, concatenar(extra2, '1');
+  }
+}
+
+visit(dato, listaCodific, codif) {
+  int pos = ascii(dato);
+  int len = strlen(codif);
+  listaCodific[pos]->codif = malloc(sizeof(char)*(len+1))
+  strcopy(listaCodific[pos]->codif, codif)
+  listaCodific[pos]->caracter = dato
+}
+
+char* concatenar(char *dato, char bit) {
+  int len = strlen(dato)
+  realloc(dato, sizeof(char)*(len+2)
+  dato[len+1] = dato[len] //muevo el '/0'
+  dato[len] = bit // agrego un 1 o un 0 antes del '/0'
+  return dato
+}
+
+
+
+
+
+
+
+
+
+acion codificar_datos(arbolDeHuffman) {
+  Codificacion *listaCodific = malloc(sizeof(Codificacion)*255)
+  recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific, "/0") 
+}
+
+recorrerarbol_doble_extra(arbolDeHuffman, inorder, visitar,listaCodific) {
+  if (!btree_empty(arbol)){
+      btree_recorrer(arbol->left, orden, visit, extra1, concatenar(extra2, '0'));
+      if (btree_empty(arbol->left && btree_empty(arbol->right))
+        visit(arbol->dato, Extra1, extra2);
+      btree_recorrer(arbol->right, orden, visit, extra1, concatenar(extra2, '1');
+  }
+}
+
+visit(dato, listaCodific, codif) {
+  int pos = ascii(dato);
+  int len = strlen(codif);
+  listaCodific[pos]->codif = malloc(sizeof(char)*(len+1))
+  strcopy(listaCodific[pos]->codif, codif)
+  listaCodific[pos]->caracter = dato
+}
+
+char* concatenar(char *dato, char bit) {
+  int len = strlen(dato)
+  realloc(dato, sizeof(char)*(len+2)
+  dato[len+1] = dato[len] //muevo el '/0'
+  dato[len] = bit // agrego 
