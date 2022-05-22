@@ -10,25 +10,25 @@ typedef struct {
 ///Luego creamos la funcion:
 
 Par *calculador_frecuencias( textoOriginal, largoTexto ) { 
-  Par *parfrec = malloc(sizeof(Par)*255)
-  int contador = 0
+  Par *parfrec = malloc(sizeof(Par)*255);
+  int contador = 0;
   while (contador <= 255) {
-    parfrec[contador].caracter = ascii[contador]
-    parfrec[contador]->frec = contar_frecuencia(parfrec[contador].caracter, textoOriginal, largoTexto)
-    contador++
+    parfrec[contador].caracter = ascii[contador];
+    parfrec[contador]->frec = contar_frecuencia(parfrec[contador].caracter, textoOriginal, largoTexto);
+    contador++;
   }
-  return parfrec
+  return parfrec;
 }
 
 ///Funcion auxilicar:
 
 int contar_frecuencia(caracter, texto, largotexto) {
-  int contador = 0, frec = 0
+  int contador = 0, frec = 0;
   while (contador <= largotexto) {
-    if (caracter == texto[contador])
-      frec++
+    if (caracter == texto[contador]);
+      frec++;
   }
-  return frec
+  return frec;
 }
 
 
@@ -74,7 +74,7 @@ listaHuff crear_arbol_huffman (listaOrdenada) {
     nodo nodo2 = nodo1->next
     int sumaFrecs = nodo1->parfrec->frec + nodo2->parfrec->frec  
     Par parnuevo
-    parnuevo->caracter = ' '
+    parnuevo->caracter = ' '   
     parnuevo->frec = sumaFrecs
     nodo nodoNuevo
     nodoNuevo = unirNodos(parNuevo, nodo1, nodo2)
@@ -134,9 +134,9 @@ char *serializar_arbol(...) {
 void serializar_estructura(arbolDeHuffman, lista) {
   Nodo *temp = arbolDeHuffman
   if temp->left == null && temp->right == null
-    lista = añadir_final_lista(lista, 1)
+    lista = agregar_final(lista, 1)
   else {
-    lista = añadir_final_lista(lista, 0)
+    lista = agregar_final(lista, 0)
     serializar_arbol(temp->left, lista)
     serializar_arbol(temp->right, lista)
   }
@@ -146,9 +146,34 @@ void agregarcaracteres(arbolDeHuffman, lista) {
   recorrerarbol_extra(arbolDeHuffman, inorder, lista)
 }
 
+Nodo* agregar_final(Nodo* lista, int dato){
+  Nodo* nuevoNodo = malloc(sizeof(Nodo));
+  nuevoNodo->dato = dato;
+  nuevoNodo->sig = NULL;
+  if(lista == NULL){
+    return nuevoNodo;
+  }
+  Nodo* p = lista;
+  for(; p->sig != NULL; p = p->sig);
+  p->sig = nuevoNodo;
+  return lista;
+}
+///////////////////////////////////////// crear_texto_binario(arreglocod , textoOriginal)
 
-/////////////////////////////////////////
 
+char *crear_texto_binario(arreglocod , textoOriginal){
+    Lista lista = crearlista;
+    Nodo *temp = arreglocod;
+    int contador = 0
+    while(contador <= largoTXT){
+        for (i = 0 ; i <= largoArray ; i++){
+            if(textoOriginal[contador] == temp[i]);
+            agregar_final(temp[i]->codif , lista);
+        }
+        contador++;
+    }
+    return lista;
+}
 
 
 
