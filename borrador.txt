@@ -3,40 +3,23 @@
 ///Previamente creamos la siguiente estructura:
 
 typedef struct {
-  int frec
+  int frec = 0
   char caracter
 } Par
 
 ///Luego creamos la funcion:
 
 Par *calculador_frecuencias( textoOriginal, largoTexto ) { 
-  Par *parfrec = malloc(sizeof(Par)*255);
-  int contador = 0;
-  while (contador <= 255) {
-    parfrec[contador].caracter = ascii[contador];
-    parfrec[contador]->frec = contar_frecuencia(parfrec[contador].caracter, textoOriginal, largoTexto);
+  Par *arreglofrec = malloc(sizeof(Par)*255);
+  (Inicializar arreglofrec)
+  int contador = 0, pos = 0;
+  while (contador <= largotexto) {
+    pos = ascii(texto[contador])
+    arreglofrec[pos].frec++;
     contador++;
   }
-  return parfrec;
+  return arreglofrec;
 }
-
-///Funcion auxilicar:
-
-int contar_frecuencia(caracter, texto, largotexto) {
-  int contador = 0, frec = 0;
-  while (contador <= largotexto) {
-    if (caracter == texto[contador]);
-      frec++;
-  }
-  return frec;
-}
-
-
-
-
-
-
-
 /////////////////////////////////////// crear_lista_ord (arreglofrec, largo) ////
 
 Previamente creamos la estructura:
@@ -51,10 +34,10 @@ typedef nodo *listaHuff
  ///Luego defino la funcion:
 
 listaHuff crear_lista_ord (arreglofrec, largo) {
-  listaHuff lista = malloc(...)
+  listaHuff lista = crearlista
   int contador = 0
   while (contador <= 255)
-    lista = lista_insertar(lista, partefrec[contador])
+    lista = lista_insertar(lista, arreglofrec[contador],comp)
   return lista
 }
 
@@ -73,8 +56,7 @@ listaHuff crear_arbol_huffman (listaOrdenada) {
     nodo nodo1 = inicio_lista(listaOrdenada);
     nodo nodo2 = nodo1->next
     int sumaFrecs = nodo1->parfrec->frec + nodo2->parfrec->frec  
-    Par parnuevo
-    parnuevo->caracter = ' '   
+    Par parnuevo  
     parnuevo->frec = sumaFrecs
     nodo nodoNuevo
     nodoNuevo = unirNodos(parNuevo, nodo1, nodo2)
