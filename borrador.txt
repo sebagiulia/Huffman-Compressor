@@ -1,3 +1,12 @@
+int main()
+{
+  char texto[] = "Licenciatura en Ciencias de la Computacion";
+  Par *arregloFrec = calculador_frecuencias(texto, 42);
+  assert(arregloFrec[99].frec == 4);       // letra c
+  assert(arregloFrec[72].caracter == 'H'); // letra H
+  assert(arregloFrec[65].frec == 0);       // letra A
+  return 0;
+}
 /////////////////////////////////////////////////calculador_frecuencias( textoOriginal , largoTexto ) ////
 
 char ascii(int n) {
