@@ -50,7 +50,15 @@ listaHuff crear_lista_ord (arreglofrec, largo) {
 }
 
 int comparar_frecuencia(Par dato1, Par dato2){
-  return dato1->frec == dato2->frec;
+    if(dato1->frec > dato2->frec){
+        return 1;    
+    }
+    if(dato1->frec == dato2->frec){
+        return 0;    
+    }
+    if(dato1->frec < dato2->frec){
+        return -1;    
+    }
 }
 
 Pila pilaDesapilar(Pila pila){
