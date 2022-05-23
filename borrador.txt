@@ -1,14 +1,5 @@
 /////////////////////////////////////////////////calculador_frecuencias( textoOriginal , largoTexto ) ////
 
-///Previamente creamos la siguiente estructura:
-
-typedef struct {
-  int frec = 0
-  char caracter
-} Par
-
-///Luego creamos la funcion:
-
 char ascii(int n) {
     char c = n;
     return c;
@@ -19,18 +10,24 @@ int numAscii (char c) {
     return n;
 }
 
-
-Par *calculador_frecuencias( textoOriginal, largoTexto ) { 
-  Par *arreglofrec = malloc(sizeof(Par)*255);
-  (Inicializar arreglofrec)
-  int contador = 0, pos = 0;
-  while (contador <= largotexto) {
-    pos = ascii(texto[contador])
-    arreglofrec[pos].frec++;
-    contador++;
-  }
-  return arreglofrec;
+Par *inicializar_arregloFrec() {
+    Par *arregloFrec = malloc(sizeof(Par) * CARACTERES_TOTALES);
+    for (int i = 0; i < CARACTERES_TOTALES; i++) {
+        arregloFrec[i].frec = 0;
+        arregloFrec[i].caracter = ascii(i);
+    } 
+    return arregloFrec;
 }
+
+Par *calculador_frecuencias(char *textoOriginal, int lenTexto) {
+    Par *arregloFrec = inicializar_arregloFrec();
+    for(int i = 0, pos; i < lenTexto; i++) {
+        pos = numAscii(textoOriginal[i]);
+        arregloFrec[pos].frec++;
+    }
+    return arregloFrec;
+}
+
 /////////////////////////////////////// crear_lista_ord (arreglofrec, largo) ////
 
 Previamente creamos la estructura:
