@@ -158,21 +158,26 @@ Nodo* agregar_final(Nodo* lista, int dato){
   p->sig = nuevoNodo;
   return lista;
 }
-///////////////////////////////////////// crear_texto_binario(arreglocod , textoOriginal)
+///////////////////////////////////////// crear_texto_binario(arreglocod, textoOriginal)
 
 
 char *crear_texto_binario(arreglocod , textoOriginal){
     Lista lista = crearlista;
-    Nodo *temp = arreglocod;
-    int contador = 0
+    char *temp = arreglocod;
+    int contador = 0, pos = 0;
     while(contador <= largoTXT){
-        for (i = 0 ; i <= largoArray ; i++){
-            if(textoOriginal[contador] == temp[i]);
-            agregar_final(temp[i]->codif , lista);
+         ********************************************
+         *for (i = 0 ; i <= largoArray ; i++){      *
+         *   if(textoOriginal[contador] == temp[i]);*
+         *   agregar_final(temp[i]->codif , lista); *
+         ******************* cambio******************
+         pos = ascii(textoOriginal[contador])  //Numero ascii del caracter asociado
+         agregrar_final(temp[pos]->codif, lista); 
+            
         }
         contador++;
     }
-    return lista;
+    return convertirastring(lista)
 }
 
 
