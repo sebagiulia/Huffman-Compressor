@@ -31,18 +31,18 @@ int glist_vacia(GList list) { return (list == NULL); }
  * Agrega un elemento al inicio de la lista.
  * copy es una función que retorna una copia física del dato.
  */
-GList glist_agregar_inicio(GList list, void *data, FuncionCopia copy) {
+GList glist_agregar_inicio(GList list, Par data, FuncionCopia copy) {
   GNode *newNode = malloc(sizeof(GNode));
   newNode->next = list;
   newNode->left = NULL;
   newNode->right = NULL;
-  newNode->data = copy(data);
+  newNode->data = data;
   return newNode;
 }
 
-GList glist_agregar_final(GList lista, void* data, FuncionCopia copy){
+GList glist_agregar_final(GList lista, Par data){
   GNode* newNode = malloc(sizeof(GNode));
-  newNode->data = copy(data);
+  newNode->data = data;
   newNode->next = NULL;
   newNode->left = NULL;
   newNode->right = NULL;
@@ -63,9 +63,9 @@ void glist_recorrer(GList list, FuncionVisitante visit) {
     visit(node->data);
 }
 
-GList glist_insertar_ordenado(GList list, void *data, FuncionCopia copy, FuncionComparadora compare) {
+GList glist_insertar_ordenado(GList list, Par data, FuncionComparadora compare) {
   GNode *newNode = malloc(sizeof(GNode));
-  newNode->data = copy(data);
+  newNode->data = data;
   newNode->next = NULL;
   newNode->left = NULL;
   newNode->right = NULL;
