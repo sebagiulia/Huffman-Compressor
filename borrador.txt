@@ -9,6 +9,17 @@ typedef struct {
 
 ///Luego creamos la funcion:
 
+char ascii(int n) {
+    char c = n;
+    return c;
+}
+
+int numAscii (char c) {
+    int n = c;
+    return n;
+}
+
+
 Par *calculador_frecuencias( textoOriginal, largoTexto ) { 
   Par *arreglofrec = malloc(sizeof(Par)*255);
   (Inicializar arreglofrec)
