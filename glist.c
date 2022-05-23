@@ -63,3 +63,28 @@ void glist_recorrer(GList list, FuncionVisitante visit) {
     visit(node->data);
 }
 
+GList glist_insertar_ordenado(GList list, void *data, FuncionCopia copy, FuncionComparadora compare) {
+  GNode *newNode = malloc(sizeof(GNode));
+  newNode->data = copy(data);
+  newNode->next = NULL;
+  newNode->left = NULL;
+  newNode->right = NULL;
+  if (glist_vacia(list)) return newNode;
+  GNode *nodeTemp = list, *aux;
+  if (compare(newNode->data, nodeTemp->data) <= 0) {
+    newNode->next = nodeTemp;
+    return newNode;
+  }
+  for(; nodeTemp->next != NULL; nodeTemp = nodeTemp->next){
+    if (compare(newNode->data,nodeTemp->next->data) <= 0){
+      aux = nodeTemp->next;
+      nodeTemp->next = newNode;
+      newNode->next = aux;
+      return list;
+    }
+  }
+  if (compare(nodeTemp->data, newNode->data) <= 0){
+    nodeTemp->next = newNode;
+    return list;
+  }
+}

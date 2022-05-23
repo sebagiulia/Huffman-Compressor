@@ -5,7 +5,7 @@
 typedef void (*FuncionDestructora)(void *dato);
 typedef void *(*FuncionCopia)(void *dato);
 typedef void (*FuncionVisitante)(void *dato);
-typedef int (*Predicado)(void *dato);
+typedef int (*FuncionComparadora)(void *dato1, void *dato2);
 
 
 typedef struct _GNode {
@@ -45,6 +45,11 @@ GList glist_agregar_final(GList lista, void *dato, FuncionCopia copiar);
  * Recorrido de la lista, utilizando la funcion pasada.
  */
 void glist_recorrer(GList lista, FuncionVisitante visitar);
+
+/**
+ * Inserta un elemento en la lista de forma ordenada.
+ */
+GList glist_insertar_ordenado(GList list, void *data, FuncionCopia copy, FuncionComparadora compare)
 
 
 
