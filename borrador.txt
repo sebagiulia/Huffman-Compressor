@@ -54,7 +54,29 @@ listaHuff crear_lista_ord (arreglofrec, largo) {
 
 Funcion Auxiliar:
 
-lista_insertar ---> practica2 ejercicio 8
+SGList sglist_insert(SGList list, void *data, CopyFunction copy, CompareFunction compare) {
+  GNode *newNode = malloc(sizeof(GNode));
+  newNode->data = copy(data);
+  newNode->next = NULL;
+  if (sglist_empty(list)) return newNode;
+  GNode *nodeTemp = list, *aux;
+  if (compare(newNode->data, nodeTemp->data) <= 0) {
+    newNode->next = nodeTemp;
+    return newNode;
+  }
+  for(; nodeTemp->next != NULL; nodeTemp = nodeTemp->next){
+    if (compare(newNode->data,nodeTemp->next->data) <= 0){
+      aux = nodeTemp->next;
+      nodeTemp->next = newNode;
+      newNode->next = aux;
+      return list;
+    }
+  }
+  if (compare(nodeTemp->data, newNode->data) <= 0){
+    nodeTemp->next = newNode;
+    return list;
+  }
+}
 
 
 
