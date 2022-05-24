@@ -1,22 +1,18 @@
 #ifndef __GLIST_H__
 #define __GLIST_H__
+#include "slist.h"
 
 typedef struct {
-  char caracter;
-  char *codif;
+  char caracter, *codif;
+  int lenCodif;
 } Codificacion;
-
-typedef void (*FuncionDestructora)(Par dato);
-typedef void *(*FuncionCopia)(Par dato);
-typedef void (*FuncionVisitante)(Par dato);
-typedef void (*FuncionVisitante2Extra)(Codificacion dato1, GList dato2);
-typedef int (*FuncionComparadora)(Par dato1, Par dato2);
-
 
 typedef struct {
     int frec;
     char caracter;
 } Par;
+
+
 
 typedef struct _GNode {
   Par data;
@@ -24,6 +20,12 @@ typedef struct _GNode {
 } GNode;
 
 typedef GNode *GList;
+
+typedef void (*FuncionDestructora)(Par dato);
+typedef void *(*FuncionCopia)(Par dato);
+typedef void (*FuncionVisitante)(Par dato);
+typedef void (*FuncionVisitante2Extra)(Par dato, Codificacion *extra1, SList extra2);
+typedef int (*FuncionComparadora)(Par dato1, Par dato2);
 
 /**
  * Devuelve una lista vacía.
@@ -59,7 +61,12 @@ void glist_recorrer(GList lista, FuncionVisitante visitar);
 /**
  * Inserta un elemento en la lista de forma ordenada.
  */
-GList glist_insertar_ordenado(GList list, Par data, FuncionComparadora compare)
+GList glist_insertar_ordenado(GList list, Par data, FuncionComparadora compare);
+
+/**
+ * Inserta un nodo en la lista de forma ordenada.
+ */
+GList glist_insertar_nodo_ordenado(GList list, GNode *node, FuncionComparadora compare);
 
 /**
  * Crea un nuevo arbol, con el dato dado en el nodo raiz, y los subarboles dados
@@ -67,7 +74,8 @@ GList glist_insertar_ordenado(GList list, Par data, FuncionComparadora compare)
  */
 GList glist_formar_arbol(Par data, GList left, GList right);
 
-void glist_pop(GList list)
+GList glist_pop(GList list);
+
 
 #endif /* __GLIST_H__ */
 

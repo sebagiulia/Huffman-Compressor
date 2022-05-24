@@ -25,7 +25,7 @@ void glist_destruir(GList list, FuncionDestructora destroy) {
 /**
  * Determina si la lista es vacía.
  */
-int glist_vacia(GList list) { return (list == NULL); }
+int glist_vacia(GList list) { return list == NULL; }
 
 /**
  * Agrega un elemento al inicio de la lista.
@@ -89,6 +89,27 @@ GList glist_insertar_ordenado(GList list, Par data, FuncionComparadora compare) 
   }
 }
 
+GList glist_insertar_nodo_ordenado(GList list, GNode *node, FuncionComparadora compare) {
+  if (glist_vacia(list)) return node;
+  GNode *nodeTemp = list, *aux;
+  if (compare(node->data, nodeTemp->data) <= 0) {
+    node->next = nodeTemp;
+    return node;
+  }
+  for(; nodeTemp->next != NULL; nodeTemp = nodeTemp->next){
+    if (compare(node->data,nodeTemp->next->data) <= 0){
+      aux = nodeTemp->next;
+      nodeTemp->next = node;
+      node->next = aux;
+      return list;
+    }
+  }
+  if (compare(nodeTemp->data, node->data) <= 0){
+    nodeTemp->next = node;
+    return list;
+  }
+}
+
 GList glist_pop(GList list){
   if (glist_vacia(list) || glist_vacia(list->next))
     return NULL;
@@ -106,3 +127,4 @@ GList glist_formar_arbol(Par data, GList left, GList right) {
   newNode->next = NULL;
   return newNode;
 }
+
