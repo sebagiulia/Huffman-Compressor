@@ -64,4 +64,6 @@ void slist_lista_a_string(char *string, SList list);
 
 int slist_len(SList list);
 
+SList slist_desapilar(SList lista);
+
 #endif /* __SLIST_H__ */
