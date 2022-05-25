@@ -78,4 +78,6 @@ int hlist_altura_arbol(HList arbol);
 
 int hlist_nnodos(HList arbol);
 
+void hlist_recorrer_extra (HList arbol , SList FuncionVisitanteExtra , SList *extra)
+
 #endif /* __HList_H__ */
