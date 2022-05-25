@@ -158,26 +158,27 @@ visit(dato, listaCodific, listabits) {
 
 ///////////////////////// serializar_arbol(arbolDeHuffman)////////////////////
 
-char *serializar_arbol(...) {
-  Lista lista = crearlista
-  serializar_estructura(arbolDeHuffman)
-  agregarcaracteres(arbolDeHuffman, lista)
-  return convertirastring(lista)
+char *  serializar_arbol(arbolDeHuffman) {
+  SList lista = slist_crear();
+  char *string[];                             ///???
+  serializar_estructura(arbolDeHuffman);
+  agregarcaracteres(arbolDeHuffman, lista);
+  return slist_lista_a_string(string, lista); ///???
 }
 
 void serializar_estructura(arbolDeHuffman, lista) {
-  Nodo *temp = arbolDeHuffman
-  if temp->left == null && temp->right == null
-    lista = agregar_final(lista, 1)
+  Nodo *temp = arbolDeHuffman;
+  if (temp->left == NULL && temp->right == NULL)
+    lista = agregar_final(lista, 1);
   else {
-    lista = agregar_final(lista, 0)
-    serializar_arbol(temp->left, lista)
-    serializar_arbol(temp->right, lista)
+    lista = agregar_final(lista, 0);
+    serializar_arbol(temp->left, lista);
+    serializar_arbol(temp->right, lista);
   }
 }
 
 void agregarcaracteres(arbolDeHuffman, lista) {
-  recorrerarbol_extra(arbolDeHuffman, inorder, lista)
+  hlist_recorrer_extra (arbolDeHuffman , slist_agregar_final , lista);
 }
 
 Nodo* agregar_final(Nodo* lista, int dato){
