@@ -154,3 +154,13 @@ int hlist_nnodos(HList arbol)
     return 1;
   return 1 + hlist_nnodos(arbol->left) + hlist_nnodos(arbol->right);
 }
+
+void hlist_recorrer_extra (HList arbol , SList FuncionVisitanteExtra , SList *extra) {
+  if (!hlist_vacia(arbol)) {
+    hlist_recorrer_extra(arbol->left , FuncionVisitanteExtra , extra);
+    visitExtra(arbol->dato , extra);
+    hlist_recorrer_extra(arbol->right , FuncionVisitanteExtra , extra);
+
+
+  }
+}
