@@ -50,7 +50,7 @@ HList hlist_add_end(HList list, Pair data)
     return newNode;
   }
   HList temp = list;
-  for (; temp->next != NULL; temp = temp->next);
+  for (; temp->next != NULL; temp = temp->next);  // Apunta al ultimo node para agregar el newNode
   temp->next = newNode;
   return list;
 }
