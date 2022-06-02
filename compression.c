@@ -5,19 +5,19 @@
 
 Pair *initialize_frecuencyArray()
 {
-  Pair *frecuencyArray = malloc(sizeof(Pair) * ASCII_CHARACTERS );
-  for (int i = 0; i < ASCII_CHARACTERS ; i++) {
+  Pair *frecuencyArray = malloc(sizeof(Pair) * ASCII_CHARACTERS ); //Creo arreglo de frecuencias.
+  for (int i = 0; i < ASCII_CHARACTERS ; i++) {                    //Inicializo el arreglo.
     frecuencyArray[i].frec = 0;
-    frecuencyArray[i].character = ascii(i);
+    frecuencyArray[i].character = ascii(i);        
   }
   return frecuencyArray;
 }
 
 Pair *frecuency_calculator(char *originalText, int textLen)
 {
-  Pair *frecuencyArray = initialize_frecuencyArray();
-  for (int i = 0, pos; i < textLen; i++) {
-    pos = numAscii(originalText[i]);
+  Pair *frecuencyArray = initialize_frecuencyArray();    
+  for (int i = 0, pos; i < textLen; i++) {             //Le sumo 1 a la frecuencia del caracter [originalText[i]]
+    pos = numAscii(originalText[i]);                   //en la posicion [pos] del arreglo de frecuencias.
     frecuencyArray[pos].frec++;
   }
   return frecuencyArray;
@@ -63,12 +63,12 @@ HList become_huffman_tree(HList sortedList)
 
 void add_character_code(Pair data, Encoding *encodingsArray, SList bitsList)
 {
-  int pos = numAscii(data.character);
+  int pos = numAscii(data.character);  //Posicion en el arreglo de codificaciones.                  
   int len = slist_len(bitsList);
   encodingsArray[pos].encod = malloc(len);
   encodingsArray[pos].encodLen = len;
   encodingsArray[pos].character = data.character;
-  slist_list_to_string(encodingsArray[pos].encod, bitsList);
+  slist_list_to_string(encodingsArray[pos].encod, bitsList);  //Paso lista de bits a arreglo de bits.
 }
 
 
@@ -81,12 +81,12 @@ void allocate_codes(HList tree, Encoding *encodingsArray, SList *bitsList)
   if (hlist_sheet(tree))
     add_character_code(tree->data, encodingsArray, *bitsList);
 
-  *bitsList = slist_add_end(*bitsList, 0);
+  *bitsList = slist_add_end(*bitsList, 0);              //Me voy a mover a la izquierda (0)
   allocate_codes(tree->left, encodingsArray, bitsList); //Recursion
   
   *bitsList = slist_pop(*bitsList);
 
-  *bitsList = slist_add_end(*bitsList, 1);
+  *bitsList = slist_add_end(*bitsList, 1);               //Me voy a mover a la derecha (1)
   allocate_codes(tree->right, encodingsArray, bitsList); //Recursion
   
   *bitsList = slist_pop(*bitsList);
@@ -95,7 +95,7 @@ void allocate_codes(HList tree, Encoding *encodingsArray, SList *bitsList)
 
 Encoding *encode_characters(HList tree)
 {
-  Encoding *encodingsArray = malloc(sizeof(Encoding) * ASCII_CHARACTERS);
+  Encoding *encodingsArray = malloc(sizeof(Encoding) * ASCII_CHARACTERS); //Creo el arreglo de codificaciones.
   SList list = slist_create();
   allocate_codes(tree, encodingsArray, &list);
   slist_destroy(list);
@@ -110,7 +110,7 @@ void copy_string(char *address, char *string, int len)
 
 char *create_binary_text(Encoding *encodingsArray , char *originalText, int textLen, int *lenEncodedText)
 {
-  int sz = 500, size = sz;          //Tamaño inicial del texto encodicado (size).
+  int sz = 500, size = sz;          //Tamaño inicial del texto codificado (size).
   char *encodedText = malloc(size);
   int counter = 0, pos = 0, i = 0;
 
