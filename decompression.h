@@ -24,7 +24,7 @@ void fill_tree_sheets(HList tree, SList *charactersList);
  * La función combina las funciones [parse_tree] y [fill_tree_sheets]
  * y devuelve el arbol final.
  */
-HList complete_free(char *serializedString, int len);
+HList complete_tree(char *serializedString, int len);
 
 /**
  * Devuelve un puntero a un string de la decodicación del [encodedText].
