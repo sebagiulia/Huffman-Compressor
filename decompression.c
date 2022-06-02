@@ -13,7 +13,7 @@ HList parse_tree(SList *structureList)
 
   *structureList = slist_dequeue(*structureList);
   tree->left = parse_tree(structureList);
-  
+                                                   // Casos recursivos sobre los sub-arboles (left and right)
   *structureList = slist_dequeue(*structureList);
   tree->right = parse_tree(structureList);
 
@@ -22,12 +22,12 @@ HList parse_tree(SList *structureList)
 
 void fill_tree_sheets(HList tree, SList *charactersList)
 {
-  if (hlist_sheet(tree)) {
+  if (hlist_sheet(tree)) {                                    // Caso base
     tree->data.character = ascii((*charactersList)->data);
-    *charactersList = slist_dequeue(*charactersList);
+    *charactersList = slist_dequeue(*charactersList);       
     return;
   }
-  fill_tree_sheets(tree->left, charactersList);
+  fill_tree_sheets(tree->left, charactersList);   // Recursion en ambos sub-arboles
   fill_tree_sheets(tree->right, charactersList);
 }
 
