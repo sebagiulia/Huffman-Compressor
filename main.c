@@ -64,7 +64,7 @@ int main(int argc, char **argv)
     int serializedStringLen = 0;
     char *serializedString = readfile(serializedTreePath, &serializedStringLen);
     
-    HList huffmanTree = complete_free(serializedString, serializedStringLen);
+    HList huffmanTree = complete_tree(serializedString, serializedStringLen);
 
     free(serializedString); // [serializedString] no es mas utilizado.
     
