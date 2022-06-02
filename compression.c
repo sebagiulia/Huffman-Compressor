@@ -48,16 +48,16 @@ HList become_huffman_tree(HList sortedList)
   if (hlist_empty(sortedList))
     return sortedList;
   while (!hlist_empty(sortedList->next)) {
-    HNode *node1 = sortedList, *node2 = node1->next;
-    int frecsSum = node1->data.frec + node2->data.frec;
-    Pair newPair;
+    HNode *node1 = sortedList, *node2 = node1->next;  
+    int frecsSum = node1->data.frec + node2->data.frec;  // sumo las frecuencias de los nodos que seran
+    Pair newPair;                                        // hijos del newNode
     newPair.frec = frecsSum;
     newPair.character = ' ';
     HNode *newNode = hlist_make_tree(newPair, node1, node2);
     sortedList = hlist_disconnect(sortedList); // desconecto node1
     sortedList = hlist_disconnect(sortedList); // desconecto node2
-    sortedList = hlist_insert_node_inorder(sortedList, newNode, (ComparisonFunction)compare_frecuencies);
-  }
+    sortedList = hlist_insert_node_inorder(sortedList, newNode, (ComparisonFunction)compare_frecuencies); // coloca el subarbol de forma ordenada
+  }                                                                                                       // (segun su "peso") en la lista nuevamente
   return sortedList;
 }
 
